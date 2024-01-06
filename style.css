@@ -1,0 +1,100 @@
+:root {
+    --SPACE: 17px;
+    --BORDER-SIZE: 2px;
+    --BORDER-COLOR: #000000;
+}
+
+.body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: antiquewhite;
+}
+
+#backpanel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+
+    padding: var(--SPACE);
+    gap: var(--SPACE);
+
+    margin: 0% 33%;
+    aspect-ratio: 5 / 7;
+    background-color: burlywood;
+    border: var(--BORDER-SIZE) solid var(--BORDER-COLOR);
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Calculator DISPLAY */
+
+#display {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    flex: 1;
+    gap: 10px;
+    padding: 10px;
+    background-color: bisque;
+    border: var(--BORDER-SIZE) solid var(--BORDER-COLOR);
+    border-radius: 10px;
+}
+
+#display .previousInput {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    flex: 1;
+    color: #383838;
+    font-size: 30px;
+    /* background-color: darkgrey; */
+}
+
+#display .currentInput {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    flex: 1.2;
+    font-size: 50px;
+    /* background-color: darkgrey; */
+}
+
+/* Calculator INPUTS */
+
+#calculatorInputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    flex: 3;
+    gap: var(--SPACE);
+}
+
+#calculatorInputs .row {
+    display: flex;
+    flex-direction: center;
+    justify-content: center;
+    align-items: stretch;
+    flex: 1;   
+    gap: var(--SPACE);
+}
+
+#calculatorInputs .row .INPUT {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    background-color: brown;
+    border: var(--BORDER-SIZE) solid var(--BORDER-COLOR);
+    border-radius: 10px;
+    font-size: 20px;
+    aspect-ratio: 1.5 / 1;
+}
+
+#calculatorInputs .row.ONE .INPUT {
+    aspect-ratio: 3 / 1;
+}
