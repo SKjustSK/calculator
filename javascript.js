@@ -56,25 +56,9 @@ operations.forEach((op) => {
     op.addEventListener('click', () => {
         if (operation !== null && currentNum.length !== 0 && previousNum !== null)
         {
-            let num = currentNum.join('');
-            console.log(`currentNum: ${num}`); // TEST
-            answer = compute(previousNum, num, operation);
-
-            // Clears Data if 0 divided by 0
-            if (answer === 'Undefined')
-            {
-                clearData();
-                console.log('Data Clear!'); 
-            } 
-            else
-            {
-                previousNum = answer;
-                currentNum = [];
-                operation = op.classList[1];
-
-                console.log(answer); // TEST
-                console.log(operation); // TEST
-            }  
+            equate();
+            operation = op.classList[1];
+            console.log(operation); // TEST
         }
         else
         {
@@ -88,7 +72,6 @@ operations.forEach((op) => {
 
                 console.log(`previousNum: ${previousNum}`); // TEST
             }
-
             console.log(operation); // TEST
         }
     });
@@ -97,14 +80,55 @@ operations.forEach((op) => {
 // Equals
 let equals = document.querySelector('.equals');
 equals.addEventListener('click', () => {
+    if (currentNum.length === 0)
+    {
+        answer = previousNum;
+    }
+    else 
+    {
+        equate();
+    }
 
+    console.log(`answer: ${answer}`); // TEST
 });
 
-// AC CLEAR
+// All CLear
+let allClear = document.querySelector('.allClear');
+allClear.addEventListener('click', clearData);
+
+// Clear
+let clear = document.querySelector('.CLEAR');
+clear.addEventListener('click', () => {
+    currentNum.pop();
+});
 
 // Decimal
 
 // Functions
+
+function equate()
+{
+    let num = currentNum.join("");
+    console.log(`currentNum: ${num}`); // TEST
+    answer = compute(previousNum, num , operation);
+
+    // Resets operation 
+    operation = null;
+
+    // Clears Data if 0 divided by 0
+    if (answer === 'Undefined')
+    {
+        clearData();
+    } 
+    // Setups next inputs
+    else
+    {
+        previousNum = answer;
+        currentNum = [];
+        
+        console.log(answer); // TEST
+    }  
+}
 
 function clearData()
 {
@@ -112,24 +136,32 @@ function clearData()
     previousNum = null;
     operation = null;
     answer = null;
+    console.log("Data Clear!");
 }
 
-// To compute currentNum and previousNum
 function compute(x , y , operation)
 {
     x = Number(x);
     y = Number(y);
+    let ans = y;
+
+    // previousNum undefined, so output currentNum
+    if (x === undefined)
+    {
+        return ans;
+    }
+    
     if (operation === 'add')
     {
-        return x + y;
+        ans = x + y;
     }
     else if (operation === 'subtract')
     {
-        return x - y;
+        ans = x - y;
     }
     else if (operation === 'multiply')
     {
-        return x*y;
+        ans = x * y;
     }
     else if (operation === 'divide')
     {
@@ -137,6 +169,16 @@ function compute(x , y , operation)
         {
             return 'Undefined';
         }
-        return x/y;
+        ans = x / y;
+    }
+
+    // To remove trailing zeroes for whole numbers
+    if (ans - ans.toFixed(0) === 0)
+    {
+        return ans;
+    }
+    else
+    {
+        return ans.toFixed(5);
     }
 }
