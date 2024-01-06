@@ -1,22 +1,3 @@
-/*
-1) Record User input until he/she hits anything other than NUMBERS and store it to a NUM1
-    Display NUMBERS on CURRENTINPUT
-    On hitting OPERATIONS->
-    Display NUM1 with OPERATION on PREVIOUSINPUT
-    CLEAR CURRENTINPUT
-    Repeat 1)
-        On hitting OPERATIONS
-            Compute NUM1 and NUM2 with respective operation
-            2) if '='
-                Display COMPUTATED NUM to CURRENTINPUT
-            else if other operation
-                Store COMPUTATED NUM
-                Repeat 1) until 2) is achieved
-*/
-
-/*
-*/
-
 const buttonList = {
     // {AC: 'AC'},
     // {CLEAR: 'CLEAR'},
