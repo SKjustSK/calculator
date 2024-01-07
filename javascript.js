@@ -97,8 +97,13 @@ clear.addEventListener('click', () => {
 // Decimal
 let decimal = document.querySelector('.decimal');
 decimal.addEventListener('click', () => {
-    currentNum.push('.');
-    currentInputDisplay();
+    let isDecimalPresent = currentNum.indexOf('.'); // Returns -1 if '.' not found
+    // To prevent multiple decimals
+    if (isDecimalPresent === -1)
+    {
+        currentNum.push('.');
+        currentInputDisplay();
+    }
 });
 
 /*
