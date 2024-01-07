@@ -95,8 +95,15 @@ clear.addEventListener('click', () => {
 });
 
 // Decimal
+let decimal = document.querySelector('.decimal');
+decimal.addEventListener('click', () => {
+    currentNum.push('.');
+    currentInputDisplay();
+});
 
-// Computing Functions
+/*
+    Computing Functions
+*/
 
 function equate()
 {
