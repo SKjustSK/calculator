@@ -25,7 +25,7 @@
     aspect-ratio: 5 / 7;
     background-color:rgb(23, 22, 22);
     border: var(--BORDER-SIZE) solid var(--BORDER-COLOR);
-    border-radius: 10px;
+    border-radius: 15px;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -41,7 +41,7 @@
     padding: 10px;
     background-color: rgb(214, 212, 212);
     border: var(--BORDER-SIZE) solid var(--BORDER-COLOR);
-    border-radius: 10px;
+    border-radius: 20px;
 }
 
 #display .previousInput {
@@ -89,9 +89,13 @@
     flex: 1;
     background-color: #68cd32;
     border: var(--BORDER-SIZE) solid var(--BORDER-COLOR);
-    border-radius: 10px;
+    border-radius: 30px;
     font-size: 20px;
     aspect-ratio: 1.5 / 1;
+}
+
+#calculatorInputs .row .INPUT:hover {
+    background-color: #88ff48;
 }
 
 #calculatorInputs .row.ONE .INPUT {
