@@ -87,15 +87,17 @@
     justify-content: center;
     align-items: center;
     flex: 1;
-    background-color: #68cd32;
+    background-color: #81f145;
     border: var(--BORDER-SIZE) solid var(--BORDER-COLOR);
     border-radius: 30px;
     font-size: 20px;
     aspect-ratio: 1.5 / 1;
+
+    transition: background-color 0.3s;
 }
 
 #calculatorInputs .row .INPUT:hover {
-    background-color: #88ff48;
+    background-color: rgb(0, 238, 255);
 }
 
 #calculatorInputs .row.ONE .INPUT {
