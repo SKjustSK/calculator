@@ -13,22 +13,31 @@ const operatorList = {
     divide: '/',
 };
 
+// Variables we will be using
 let currentNum = [];
-let previousNum = null;
+let previousNum = 0;
 let operation = null;
 let answer = 0;
 
-// Adding eventListeners to buttons
+// Initialing display
+currentInputDisplay();
+
+/*
+    Adding eventListeners to buttons
+*/
 
 // Number Inputs
 let numbers = document.querySelectorAll('.number');
 numbers.forEach((number) => {
     number.addEventListener('click', () => {
         let num = number.classList[1];
-        currentNum.push(buttonList[num]);
-        currentInputDisplay();
 
-        console.log(buttonList[num]); // TEST
+        // 13 is hard limit of display of calculator
+        if (currentNum.length < 13)
+        {
+            currentNum.push(buttonList[num]);
+        }
+        currentInputDisplay();
     });
 });
 
@@ -36,11 +45,10 @@ numbers.forEach((number) => {
 let operations = document.querySelectorAll('.operation');
 operations.forEach((op) => {
     op.addEventListener('click', () => {
-        if (operation !== null && currentNum.length !== 0 && previousNum !== null)
+        if (operation !== null && currentNum.length !== 0)
         {
             equate();
             operation = op.classList[1];
-            console.log(operation); // TEST
         }
         else
         {
@@ -51,10 +59,7 @@ operations.forEach((op) => {
                 previousNum = currentNum.join("");
                 currentNum = [];
                 operation = op.classList[1];
-
-                console.log(`previousNum: ${previousNum}`); // TEST
             }
-            console.log(operation); // TEST
         }
         previousInputDisplay();
         currentInputDisplay();
@@ -72,8 +77,6 @@ equals.addEventListener('click', () => {
     {
         equate();
     }
-
-    console.log(`answer: ${answer}`); // TEST
 });
 
 // All CLear
@@ -98,15 +101,20 @@ clear.addEventListener('click', () => {
 function equate()
 {
     let num = currentNum.join("");
-    console.log(`currentNum: ${num}`); // TEST
+
+    // When user hits enter without any operations
+    if (operation === null)
+    {   
+        operation = 'add'; // previousNum will be zero in any case, therefore wont affect calculations
+    }
+
     answer = compute(previousNum, num , operation);
 
-    // Clears Data if 0 divided by 0
+    // if divided by zero
     if (answer === 'Undefined')
     {   
-        let currentInputText = document.querySelector('.currentInputText');
-        currentInputText.textContent = `${answer}`; 
-        previousInputDisplay();
+        currentInputDisplay(answer);
+        previousInputDisplay(`${previousNum} ${operatorList[operation]} ${currentNum.join('')}`);
         clearData();
     } 
     // Setups next inputs
@@ -118,8 +126,6 @@ function equate()
         previousNum = answer;
         currentNum = [];
         currentInputDisplayANSWER();
-
-        console.log(answer); // TEST
     }  
 
     // Resets operation 
@@ -128,8 +134,8 @@ function equate()
 
 function clearData()
 {
+    previousNum = 0;
     currentNum = [];
-    previousNum = null;
     operation = null;
     answer = 0;
     console.log("Data Clear!");
@@ -181,14 +187,20 @@ function compute(x , y , operation)
 
 // Display Functions
 
-function currentInputDisplay()
+function currentInputDisplay(display)
 {
     let currentInputText = document.querySelector('.currentInputText');
+    // This is done because joining currentNum with no elements will not result to 0
     let currentDisplayNum = '0';
-    if (currentNum.length !== 0)
+    if (display !== undefined)
+    {
+        currentDisplayNum = display;
+    }
+    else if (currentNum.length !== 0)
     {
         currentDisplayNum = currentNum.join('');
     }
+
     currentInputText.textContent = `${currentDisplayNum}`;
 }
 

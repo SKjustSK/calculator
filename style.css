@@ -9,7 +9,7 @@
     justify-content: center;
     align-items: center;
     
-    background-color: antiquewhite;
+    background-color: rgb(172, 157, 137);
 }
 
 #backpanel {
@@ -23,7 +23,7 @@
 
     margin: 0% 33%;
     aspect-ratio: 5 / 7;
-    background-color: burlywood;
+    background-color:rgb(23, 22, 22);
     border: var(--BORDER-SIZE) solid var(--BORDER-COLOR);
     border-radius: 10px;
     font-family: Arial, Helvetica, sans-serif;
@@ -39,7 +39,7 @@
     flex: 1;
     gap: 10px;
     padding: 10px;
-    background-color: bisque;
+    background-color: rgb(214, 212, 212);
     border: var(--BORDER-SIZE) solid var(--BORDER-COLOR);
     border-radius: 10px;
 }
@@ -51,16 +51,15 @@
     flex: 1;
     color: #383838;
     font-size: 30px;
-    /* background-color: darkgrey; */
 }
 
 #display .currentInput {
     display: flex;
     justify-content: end;
     align-items: end;
+    flex-wrap: wrap;
     flex: 1.2;
     font-size: 50px;
-    /* background-color: darkgrey; */
 }
 
 /* Calculator INPUTS */
@@ -88,7 +87,7 @@
     justify-content: center;
     align-items: center;
     flex: 1;
-    background-color: brown;
+    background-color: #68cd32;
     border: var(--BORDER-SIZE) solid var(--BORDER-COLOR);
     border-radius: 10px;
     font-size: 20px;
